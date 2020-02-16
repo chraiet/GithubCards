@@ -14,8 +14,8 @@ class Form extends React.Component<Props> {
     handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
         const resp = await axios.get(`https://api.github.com/users/${this.state.username}`);
-        const {name, avatar_url, company, html_url} = resp.data;
-        const profile: Profile = { name, avatar_url, company, html_url };
+        const {id, name, avatar_url, company, html_url} = resp.data;
+        const profile: Profile = { name, avatar_url, company, html_url, id };
         this.props.onSubmit(profile);
         this.state.username = '';
         if (this.usernameInput.current?.value) {
